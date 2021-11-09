@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp1
 {
-    class Patient : Person
+    class Patient : Person, IPrint
     {
         public int Id { get; }
         private static int id = 0; 
@@ -19,6 +19,35 @@ namespace ConsoleApp1
             Doctors = new List<Doctor>();
             DoctorRecipes = new List<DoctorRecipe>();
         }
-        //public AssineD
+        public void TryAssigneDoctor(Doctor doctor)
+        {
+            if (!Doctors.Contains(doctor))
+            {
+                Doctors.Add(doctor);
+            }
+        }
+
+        public void Print()
+        {
+            Console.Write($"Patient: {this.Id} | {this.Firstname} {this.Lastname} | Age is {this.Age} Gender is: ");
+            Console.WriteLine((Gender) ? "Male" : "Famale");
+
+        }
+
+        public void PrintDeep()
+        {
+            Console.Write($"Patient: {this.Id} | {this.Firstname} {this.Lastname} | Age is {this.Age} Gender is: ");
+            Console.WriteLine((Gender) ? "Male" : "Famale");
+            Console.WriteLine("Patient doctors: ");
+            foreach (var item in Doctors)
+            {
+                Console.WriteLine($"{item.Id} | {item.Firstname} {item.Lastname} | Age is {item.Age}");
+            }
+            Console.WriteLine("Patient recipe: ");
+            foreach (var item in DoctorRecipes)
+            {
+                item.Print();
+            }
+        }
     }
 }
