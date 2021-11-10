@@ -15,7 +15,7 @@ namespace ConsoleApp1
         {
             foreach (var item in printables)
             {
-                item.Print();
+               // item.Print();
             }
         }
     }

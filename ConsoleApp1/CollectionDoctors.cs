@@ -5,63 +5,56 @@ using System.Text;
 
 namespace ConsoleApp1
 {
-    class CollectionDoctors<T> : IEnumerable<T>
+    class CollectionDoctors : IEnumerable
     {
-        private T[] arrayData;
-        private int version;
-        private const int defaultSize = 2;
-        private int index;
         public List<Doctor> Doctors;
         public CollectionDoctors()
         {
             Doctors = new List<Doctor>();
         }
-
-        public IEnumerator<T> GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new Enumerator(Doctors);
         }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-        object IEnumerator.Current
-        //public Doctor this[int index]
-        //{
-        //    get { return Doctors[index]; }
-        //    set { Doctors.Insert(index, value); }
-        //} 
-        //public IEnumerator<Doctor> GetEnumerator()
-        //{
-        //    return Doctors.GetEnumerator();
-        //}
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return this.GetEnumerator();
-        //}
-        
     }
+
     class Enumerator : IEnumerator 
     { 
-        private readonly List<Doctor> Doctors;
-        private int index = -1;
+        private readonly List<Doctor> _doctors;
+        private int _position = -1;
         public Enumerator(List<Doctor> doctors)
         {
-            this.Doctors = doctors;
+            this._doctors = doctors;
         }
 
-        public object Current => throw new NotImplementedException();
+        public object Current
+        {
+            get
+            {
+                if(_position == -1 || _position >= _doctors.Count)
+                    throw new IndexOutOfRangeException();
+
+                return _doctors[_position]; 
+            }
+        }
 
         public bool MoveNext()
         {
-            throw new NotImplementedException();
+            while (_position < _doctors.Count)
+            {
+                _position++;
+                if (_position < _doctors.Count)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            _position = -1; 
         }
     }
 

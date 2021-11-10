@@ -99,6 +99,13 @@ namespace ConsoleApp1
                 var collDoc = new CollectionDoctors();
                 collDoc.Doctors.Add(doc1);
                 collDoc.Doctors.Add(doc2);
+                collDoc.Doctors.Add(doc2);
+                collDoc.Doctors.Add(doc2);
+
+                foreach (var item in collDoc)
+                {
+                    Console.WriteLine(((Doctor)item).Lastname);
+                }
 
                 Printer.PrintCollection(collDoc);
 
