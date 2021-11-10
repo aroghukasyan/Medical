@@ -93,29 +93,35 @@ namespace ConsoleApp1
                 doc1.AssigneRecipe(pat1, new Recipe() { Name = "analgin", Description = "once every day" });
                 doc1.AssigneRecipe(pat1, new Recipe() { Name = "analgin", Description = "once every day" });
 
-                hospital.Print();
-                Console.WriteLine();
-                foreach (var item in hospital.Doctors)
-                {
-                    item.Print();
-                }
-                Console.WriteLine();
-                foreach (var item in hospital.Patients)
-                {
-                    item.Print();
-                }
-                Console.WriteLine();
-                foreach (var item in hospital.Doctors)
-                {
-                    item.PrintDeep();
-                }
-                Console.WriteLine();
-                foreach (var item in hospital.Patients)
-                {
-                    item.PrintDeep();
-                }
+                Printer.Print(hospital);
+                //Printer.PrintCollection(hospital.Doctors);
 
+                var collDoc = new CollectionDoctors();
+                collDoc.Doctors.Add(doc1);
+                collDoc.Doctors.Add(doc2);
 
+                Printer.PrintCollection(collDoc);
+
+                ////Console.WriteLine();
+                ////foreach (var item in hospital.Doctors)
+                ////{
+                ////    item.Print();
+                ////}
+                ////Console.WriteLine();
+                ////foreach (var item in hospital.Patients)
+                ////{
+                ////    item.Print();
+                ////}
+                ////Console.WriteLine();
+                ////foreach (var item in hospital.Doctors)
+                ////{
+                ////    item.PrintDeep();
+                ////}
+                ////Console.WriteLine();
+                ////foreach (var item in hospital.Patients)
+                ////{
+                ////    item.PrintDeep();
+                ////}
                 //hospital.UpdateDoctor(s => s.Where(s => s?.Id == 2).FirstOrDefault().Firstname = "SSSS");
             }
             catch (Exception mesagge)

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp1
 {
-    class PatientRecipe : IPrint
+    class PatientRecipe : IPrintable
     {
         public Patient Patient { get; set; }
         public Recipe Recipe { get; set; }

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ConsoleApp1
 {
-    class Hospital : IPrint
+    class Hospital : IPrintable
     {
         public List<Doctor> Doctors;
         public List<Patient> Patients;

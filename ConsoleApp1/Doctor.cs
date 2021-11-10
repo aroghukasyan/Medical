@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp1
 {
-    class Doctor : Person, IPrint
+    class Doctor : Person, IPrintable
         {
         public int Id { get; }
         private static int id = 0;

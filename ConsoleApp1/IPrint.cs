@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp1
 {
-    interface IPrint
+    interface IPrintable
     {
         void Print();
         void PrintDeep();
